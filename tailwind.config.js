@@ -9,14 +9,8 @@ module.exports = {
   ],
   theme: {
     extend: {
-      padding: {
-        '15px': '15px',
-      },
-      width: {
-        90: '90%',
-      },
-      maxWidth: {
-        '1200px': '1200px',
+      height: {
+        150: '150px',
       },
       screens: {
         tablet: '769px',

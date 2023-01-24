@@ -5,7 +5,7 @@ import { Post } from '../../types/post';
 import dateFormat from '../functions/dateFormat';
 import { Header } from '@/components/Header/Header';
 import { Footer } from '@/components/Footer/Footer';
-import { ShareBtn } from '@/components/shareBtn/shareBtn';
+import { ShareBtn } from '@/components/ShareBtn/shareBtn';
 
 // テンプレートに渡すデータの型を指定します
 type Props = {

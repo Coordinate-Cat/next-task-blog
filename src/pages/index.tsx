@@ -39,12 +39,12 @@ const Home: NextPage<Props> = (props: Props) => {
                 className='cursor-pointer p-[15px] shadow-none hover:shadow-lg'
               >
                 <Link href={`/posts/${post.id}`}>
-                  <div className='mb-2.5 h-150'>
+                  <div className='mb-2.5 h-[150px]'>
                     <Image
                       src={post.thumbnail.url}
                       width={300}
                       height={150}
-                      className='my-0 mx-auto h-150 object-contain object-center'
+                      className='my-0 mx-auto h-[150px] object-contain object-center'
                       alt='thumbnail'
                     />
                   </div>

@@ -9,9 +9,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      height: {
-        150: '150px',
-      },
       screens: {
         tablet: '769px',
         // => @media (min-width: 769px) { ... }

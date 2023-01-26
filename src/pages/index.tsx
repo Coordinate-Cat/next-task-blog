@@ -18,7 +18,7 @@ const Home: NextPage<Props> = (props: Props) => {
 
   //post.publishedAtをスラッシュ区切りの日付に変換
   posts.map((post) => {
-    dateFormat(post);
+    dateFormat(post.publishedAt);
   });
 
   return (

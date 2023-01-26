@@ -15,7 +15,7 @@ type Props = {
 const PostId: NextPage<Props> = (props: Props) => {
   const { post } = props;
 
-  dateFormat(post);
+  dateFormat(post.publishedAt);
 
   return (
     <>

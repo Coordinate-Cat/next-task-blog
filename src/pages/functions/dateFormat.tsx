@@ -1,10 +1,9 @@
-import { Post } from '../../types/post';
-
 // post.publishedAtをスラッシュ区切りの日付に変換
-export default function dateFormat(post: Post) {
-  const date = new Date(post.publishedAt);
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  post.publishedAt = `${year}/${month}/${day}`;
+export default function dateFormat(date: string) {
+  const d = new Date(date);
+  const year = d.getFullYear();
+  const month = d.getMonth() + 1;
+  const day = d.getDate();
+
+  return `${year}/${month}/${day}`;
 }

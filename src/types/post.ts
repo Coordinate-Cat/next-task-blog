@@ -5,7 +5,7 @@ export interface Post {
   id: string;
   title: string;
   publishedAt: string;
-  category: Category;
+  category: Array<Category>;
   description: string;
   body: string;
 }

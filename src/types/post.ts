@@ -1,11 +1,15 @@
 import Category from './category';
 
 export interface Post {
-  thumbnail: any;
+  thumbnail: {
+    url: string;
+    width: number;
+    height: number;
+  };
   id: string;
   title: string;
   publishedAt: string;
-  category: Category;
+  category: Array<Category>;
   description: string;
   body: string;
 }

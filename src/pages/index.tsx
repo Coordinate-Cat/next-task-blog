@@ -16,11 +16,6 @@ type Props = {
 const Home: NextPage<Props> = (props: Props) => {
   const { posts } = props;
 
-  //post.publishedAtをスラッシュ区切りの日付に変換
-  posts.map((post) => {
-    dateFormat(post.publishedAt);
-  });
-
   return (
     <>
       <Head>
@@ -50,7 +45,7 @@ const Home: NextPage<Props> = (props: Props) => {
                   </div>
                   <div>
                     <p className='mb-[5px] text-xs text-[#5c6069]'>
-                      {post.publishedAt}
+                      {dateFormat(post.publishedAt)}
                     </p>
                     <h2 className='mt-0 mb-2.5 font-bold'>{post.title}</h2>
                     <p className='text-xs leading-[20.4px] text-[#5c6069] '>
@@ -69,7 +64,11 @@ const Home: NextPage<Props> = (props: Props) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const data = await client.get({ endpoint: 'post' });
+  // queriesでfieldsを指定して必要なデータのみを取得
+  const data = await client.get({
+    endpoint: 'post',
+    queries: { fields: 'id,title,description,thumbnail,publishedAt' },
+  });
 
   return {
     props: {

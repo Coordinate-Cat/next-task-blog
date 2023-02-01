@@ -1,3 +1,4 @@
+import { z } from 'zod';
 import type { NextPage, GetStaticProps, GetStaticPropsContext } from 'next';
 import { client } from '../../clients/client';
 import { Content } from '../../types/content';
@@ -26,7 +27,9 @@ const PostId: NextPage<Props> = (props: Props) => {
             {post.title}
           </h1>
           <div className='mb-2.5'>
-            <span className='text-sm'>記事作成日: {post.publishedAt}</span>
+            <span className='text-sm'>
+              記事作成日: {dateFormat(post.publishedAt)}
+            </span>
           </div>
 
           <div className='grid grid-flow-col justify-start'>
@@ -67,7 +70,29 @@ export const getStaticProps: GetStaticProps<Props> = async (
   context: GetStaticPropsContext<{ id?: string }>,
 ) => {
   const params = context.params!;
-  const data = await client.get({ endpoint: 'post', contentId: params.id });
+  const data = await client.get({
+    endpoint: 'post',
+    queries: {
+      fields: 'id,title,body,description,category,thumbnail,publishedAt',
+    },
+    contentId: params.id,
+  });
+
+  // zodで検証
+  const schema = z.object({
+    id: z.string(),
+    title: z.string(),
+    body: z.string(),
+    publishedAt: z.string(),
+    category: z.array(
+      z.object({
+        id: z.string(),
+        name: z.string(),
+      }),
+    ),
+    description: z.string(),
+  });
+  schema.parse(data);
 
   return {
     props: {

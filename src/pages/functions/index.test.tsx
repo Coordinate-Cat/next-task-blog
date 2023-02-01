@@ -16,7 +16,11 @@ const post: Post = {
       revisedAt: '2023-01-01T00:00:00+09:00',
     },
   ],
-  thumbnail: undefined,
+  thumbnail: {
+    url: 'dummyUrl',
+    height: 300,
+    width: 150,
+  },
   description: '',
 };
 
